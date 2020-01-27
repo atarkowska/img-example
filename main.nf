@@ -19,11 +19,11 @@ process fiji_plugins_biop {
   file input_dir
 
   output:
-  file 'output.tif' into ch_stitched
+  file 'stitched/output.tif' into ch_stitched
 
   shell:
   '''
-  ImageJ-linux64 --headless --default-gc --ij2 --console -macro !{baseDir}/bin/scripts/ijm/biop_stitcher.ijm 'thedir=!{input_dir} savedir=stitched_!{row.cluster} resize=!{resize} export_files=[Fused Fields] is_select_wells=false str_xywh= is_do_z_project=!{do_z_project} z_project_method=[Max Intensity] is_do_fields=true fields_for_export_str= is_do_channels=false channels_for_export_str= is_do_slices=false slices_for_export_str= is_do_timepoints=false timepoints_for_export_str= min_32=0.0 max_32=10000.0'
+  ImageJ-linux64 --headless --default-gc --ij2 --console -macro !{baseDir}/bin/scripts/ijm/biop_stitcher.ijm 'thedir=!{input_dir} savedir=stitched resize=!{resize} export_files=[Fused Fields] is_select_wells=false str_xywh= is_do_z_project=!{do_z_project} z_project_method=[Max Intensity] is_do_fields=true fields_for_export_str= is_do_channels=false channels_for_export_str= is_do_slices=false slices_for_export_str= is_do_timepoints=false timepoints_for_export_str= min_32=0.0 max_32=10000.0'
   ls output.tif
   '''
 
